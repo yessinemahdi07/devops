@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  mysqldb:
+   image: mysql:5.7 
+   restart: unless-stopped 
+   environment:
+    - MYSQL\_ROOT\_PASSWORD=root
+    - MYSQL\_DATABASE=devopsdb
+   ports:
+    - "3306:3306"
+   volumes: 
+    - db\_data:/var/lib/mysql 
+app-service:
+ depends\_on:
+  - mysqldb 
+ build: . 
+ ports: 
+  - "8082:8082" 
+volumes: 
+   db\_data:
