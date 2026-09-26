@@ -28,10 +28,8 @@ pipeline {
         }
 
         stage('Deploy Application') {
-            steps {
-                echo 'Starting containers with Docker Compose...'
-                sh 'docker-compose up -d'
-            }
-        }
+             steps {
+                sh 'docker-compose down'
+                sh 'docker-compose up -d' } }
     }
 }
