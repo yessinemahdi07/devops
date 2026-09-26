@@ -5,7 +5,8 @@ services:
     image: devops-app:latest
     container_name: devops-app
     ports:
-      - "8082:8082"
+      - "8082:8080"
+    restart: on-failure
     depends_on:
       - mysqldb
 
